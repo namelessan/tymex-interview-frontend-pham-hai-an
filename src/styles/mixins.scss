@@ -1,0 +1,21 @@
+@import './variables.module.scss';
+
+@mixin mobile {
+  @media (max-width: calc($screen-mobile - 1px)) {
+    @content;
+  }
+}
+
+// Tablet (min-width: 768px and max-width: 1023px)
+@mixin tablet {
+  @media (min-width: $screen-mobile) {
+    @content;
+  }
+}
+
+// Desktop (min-width: 1024px)
+@mixin desktop {
+  @media (min-width: $screen-tablet) {
+    @content;
+  }
+}
