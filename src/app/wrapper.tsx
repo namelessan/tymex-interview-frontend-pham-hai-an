@@ -33,6 +33,10 @@ export default function Wrapper(props: PropsWithChildren) {
         colorPrimary: variables.backgroundButtonColor,
         primaryShadow: variables.btnBoxShadow,
       },
+      Input: {
+        colorBgContainer: variables.backgroundColor,
+        colorBorder: '#fff',
+      },
     },
   };
 

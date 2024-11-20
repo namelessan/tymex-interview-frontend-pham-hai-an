@@ -1,0 +1,125 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables.module.scss';
+
+.footerTop {
+  width: 100%;
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.footerBottom {
+  padding: 20px 10px;
+  background-color: $background-color;
+
+  @include desktop {
+    padding: 50px 10%;
+  }
+}
+
+.footerInfo {
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
+
+.footerNavigation,
+.footerContact,
+.footerSubscribe {
+  padding-bottom: 20px;
+
+  @include tablet {
+    flex: 1;
+  }
+}
+
+.footerNavigation {
+  padding-right: 10px;
+}
+.footerSubscribe {
+  padding-left: 10px;
+}
+
+.navigationTitle,
+.contactTitle,
+.subscribeTitle {
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+
+  @include desktop {
+    font-size: 20px;
+  }
+}
+
+.navRow {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.navCol {
+  flex: 1;
+  padding-right: 40px;
+  padding-bottom: 10px;
+  text-wrap: nowrap;
+}
+
+.contactRow {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-bottom: 10px;
+
+  img {
+    margin-right: 10px;
+  }
+}
+
+.subscribeTitle {
+  text-wrap: nowrap;
+}
+
+.subscribeForm {
+  width: 100%;
+  input {
+    width: calc(100% - 10px - 101px);
+    margin-right: 10px;
+  }
+}
+
+.copyright {
+  text-align: center;
+
+  @include desktop {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: left;
+    align-items: center;
+  }
+}
+
+.copyrightLeft,
+.copyrightRight {
+  @include desktop {
+    flex: 1;
+  }
+}
+
+.copyrightRight {
+  text-align: center;
+
+  @include desktop {
+    text-align: right;
+  }
+
+  a {
+    display: inline-block;
+    margin: 0;
+    padding: 10px;
+  }
+}

@@ -50,7 +50,7 @@ export default function Header() {
     {
       key: 'whitepaper',
       label: <Link href={'#'}>WHITE PAPER</Link>,
-      name: 'WHITE PAPER',
+      name: 'WHITEPAPER',
       path: '#',
     },
   ];
