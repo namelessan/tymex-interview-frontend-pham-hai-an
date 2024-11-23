@@ -15,27 +15,27 @@ export default function Wrapper(props: PropsWithChildren) {
     algorithm: theme.darkAlgorithm,
     token: {
       colorPrimary: variables.primaryColor,
-      colorBgContainer: variables.backgroundButtonColor,
       fontFamily: variables.fontFamily,
+      borderRadius: 4,
     },
     components: {
       Button: {
         fontWeight: 600,
         borderRadius: 4,
-        // colorBgContainer: variables.backgroundButtonColor,
-        // colorText: '#FFF',
-        // colorBorder: 'transparent',
-        // defaultShadow: variables.btnBoxShadow,
-        // defaultGhostColor: '#FFF',
-        // ghostBg: variables.backgroundButtonColor,
-        // defaultGhostBorderColor:
-        // primaryColor: ,
         colorPrimary: variables.backgroundButtonColor,
         primaryShadow: variables.btnBoxShadow,
       },
       Input: {
         colorBgContainer: variables.backgroundColor,
         colorBorder: '#fff',
+        paddingBlock: 8,
+      },
+      Select: {
+        colorBgContainer: 'transparent',
+      },
+      Slider: {
+        railHoverBg: variables.railBg,
+        railBg: variables.railBg,
       },
     },
   };

@@ -1,0 +1,74 @@
+@import '../../../styles/variables.module.scss';
+@import '../../../styles/mixins.scss';
+
+.filterButtonGroup {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  @include desktop {
+    padding-top: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: scroll;
+    padding-right: 30px;
+  }
+
+  &.expanded {
+    flex-wrap: wrap;
+    overflow: auto;
+  }
+}
+
+.btnFilter {
+  background: linear-gradient(
+    91.47deg,
+    rgba(218, 69, 143, 0.4) -6%,
+    rgba(218, 52, 221, 0.4) 113.05%
+  );
+
+  padding: 10px 16px 10px 16px;
+  border-radius: 4px;
+  display: inline-block;
+  cursor: pointer;
+  margin-bottom: 15px;
+  text-wrap: nowrap;
+
+  @include desktop {
+    // margin-bottom: 0;
+  }
+
+  &:not(:last-of-type) {
+    margin-right: 15px;
+  }
+
+  &.active {
+    background: $background-button-color;
+  }
+}
+
+.filterMore {
+  padding: 1px;
+  position: absolute;
+  right: -1px;
+  top: 0;
+  background: linear-gradient(
+    81.35deg,
+    rgba(0, 0, 0, 0) 6%,
+    rgba(0, 0, 0, 0.8) 70.38%
+  );
+  cursor: pointer;
+  display: none;
+
+  @include desktop {
+    display: inline;
+  }
+
+  img {
+    transition: transform 0.3s ease;
+  }
+
+  &.expanded {
+    img {
+      transform: rotate(180deg);
+    }
+  }
+}

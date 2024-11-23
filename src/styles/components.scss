@@ -1,0 +1,51 @@
+// customize Slider
+
+.ant-slider-mark {
+  .ant-slider-mark-text {
+    text-wrap: nowrap;
+    color: #fff !important;
+
+    &:first-of-type {
+      transform: translateX(-10%) !important;
+    }
+
+    &:last-of-type {
+      transform: translateX(-100%) !important;
+    }
+  }
+}
+
+.ant-slider-track {
+  background: linear-gradient(
+    91.27deg,
+    rgba(218, 69, 143, 0) 0.55%,
+    #da41a2 16.03%,
+    #da37ce 83.19%,
+    rgba(218, 52, 221, 0) 102.8%
+  );
+}
+
+.ant-slider .ant-slider-handle {
+  &::after {
+    background: url('../../public/icons/slider_handle.svg') 0 0;
+    background-size: contain;
+  }
+}
+
+// Form
+.ant-form-item-label {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+// Tooltip
+
+.ant-tooltip-inner {
+  background: $background-button-color;
+}
+
+.ant-tooltip-arrow {
+  &::before {
+    background: $background-button-color !important;
+  }
+}
