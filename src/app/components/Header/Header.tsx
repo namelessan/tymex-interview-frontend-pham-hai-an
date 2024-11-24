@@ -137,7 +137,7 @@ export default function Header() {
             <Image src={theDj} className={styles.theDj} alt="the Dj"></Image>
             <div className={styles.theDjFrame}>
               <div style={{ position: 'relative', width: '100%' }}>
-                <Image src={thDjFrame} alt="the Dj"></Image>
+                <Image src={thDjFrame} alt="the Dj arrived"></Image>
                 <div className={styles.theDjName}>THE DJ</div>
               </div>
             </div>
