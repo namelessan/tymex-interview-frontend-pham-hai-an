@@ -52,6 +52,7 @@ export default function Filter() {
     });
 
     const url = `${path}?${queryStr}`;
+    console.trace('onSubmit new query', url);
     router.push(url, { scroll: false });
   };
 

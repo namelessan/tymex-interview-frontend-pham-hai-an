@@ -41,10 +41,20 @@ export default function Home() {
       }
 
       let data: IProduct[] = await response.json();
-      setState((prevState) => ({
-        ...prevState,
-        products: [...prevState.products, ...data],
-      }));
+      setState((prevState) => {
+        const prevProductIds = prevState.products.map((p) => p.id);
+        const products = [...prevState.products];
+        data.forEach((product) => {
+          if (!prevProductIds.includes(product.id)) {
+            products.push(product);
+          }
+        });
+
+        return {
+          ...prevState,
+          products,
+        };
+      });
     } catch (error) {
       console.error(error);
     }
@@ -68,12 +78,11 @@ export default function Home() {
   }, [fetchProducts, nftListRef]);
 
   useEffect(() => {
-    refreshProducts();
+    // Only fetch products if searchParams is valid
+    if (searchParams.toString()) {
+      refreshProducts();
+    }
   }, [searchParams]);
-
-  useEffect(() => {
-    console.log('changed state', { state });
-  }, [state]);
 
   return (
     <div className={styles.page}>
@@ -94,8 +103,8 @@ export default function Home() {
                 </div>
               ))}
               {loading
-                ? Array.from(Array(5)).map((key) => (
-                    <div key={key} className={styles.col}>
+                ? Array.from({ length: 5 }).map((_, index) => (
+                    <div key={`skeleton-${index}`} className={styles.col}>
                       <NFTCardSkeleton></NFTCardSkeleton>
                     </div>
                   ))
