@@ -6,7 +6,8 @@ $nft-max-width: 234px;
   padding: 8px;
   background: #3a384199;
   border-radius: 10px;
-  // max-width: calc($nft-max-width + 16px * 2);
+  height: 100%;
+  position: relative;
 
   @include desktop {
     padding: 16px;
@@ -15,7 +16,6 @@ $nft-max-width: 234px;
 
 .nftPicture {
   position: relative;
-  // max-width: $nft-max-width;
   aspect-ratio: 1/1;
   border-radius: 4px;
 }
@@ -73,6 +73,14 @@ $nft-max-width: 234px;
   display: flex;
   align-items: center;
   padding-top: 20px;
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+
+  @include desktop {
+    bottom: 16px;
+    left: 16px;
+  }
 }
 
 .creatorAvatar {
@@ -95,6 +103,11 @@ $nft-max-width: 234px;
 .creatorName {
   font-size: 12px;
   margin-left: 10px;
+}
+
+.creatorPlaceholder {
+  height: 52px;
+  width: 100%;
 }
 
 .status {

@@ -114,6 +114,7 @@ export default function NFTCard(props: Props) {
           </div>
           <div className={styles.creatorName}>{fullName}</div>
         </div>
+        <div className={styles.creatorPlaceholder}></div>
       </div>
     </div>
   );
