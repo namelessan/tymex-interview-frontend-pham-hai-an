@@ -9,6 +9,7 @@ import NFTCard, { NFTCardSkeleton } from './components/NFTCard/NFTCard';
 import { useSearchParams } from 'next/navigation';
 import { generateParams, getQuery } from './helper';
 import { Button } from 'antd';
+import { IProduct } from './types';
 
 interface IState {
   products: IProduct[];
@@ -40,7 +41,7 @@ export default function Home() {
         throw new Error('Failed to fetch Product data');
       }
 
-      let data: IProduct[] = await response.json();
+      const data: IProduct[] = await response.json();
       setState((prevState) => {
         const prevProductIds = prevState.products.map((p) => p.id);
         const products = [...prevState.products];

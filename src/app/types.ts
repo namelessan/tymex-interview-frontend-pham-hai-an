@@ -1,4 +1,4 @@
-interface IProduct {
+export interface IProduct {
   id: number;
   title: string;
   category:
@@ -27,13 +27,4 @@ interface IAuthor {
   gender: string;
   avatar: string;
   onlineStatus: string;
-}
-
-interface IFilter {
-  title_like?: string;
-  price_gte: number | string;
-  price_lte: number | string;
-  tier?: string;
-  theme?: string;
-  sort: string;
 }

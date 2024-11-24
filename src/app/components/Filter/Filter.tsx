@@ -34,7 +34,7 @@ export default function Filter() {
   const path = usePathname();
 
   const onSubmit = () => {
-    let filterForm = form.getFieldsValue();
+    const filterForm = form.getFieldsValue();
     const { timeSort, priceSort } = filterForm;
 
     const newQuery = {
