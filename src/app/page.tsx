@@ -1,124 +1,18 @@
 'use client';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import Filter from './components/Filter/Filter';
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import styles from './page.module.scss';
-import FilterButtons from './components/FilterButtons/FilterButtons';
-import NFTCard, { NFTCardSkeleton } from './components/NFTCard/NFTCard';
-import { useSearchParams } from 'next/navigation';
-import { generateParams, getQuery } from './helper';
-import { Button } from 'antd';
-import { IProduct } from './types';
 
-interface IState {
-  products: IProduct[];
-  page: number;
-}
+import NFT from './components/NFT/NFT';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import styles from './page.module.scss';
+import { Suspense } from 'react';
 
 export default function Home() {
-  const url = `https://tymex-fake-server-namelessans-projects.vercel.app/products`;
-
-  const [loading, setLoading] = useState(true);
-  const [state, setState] = useState<IState>({
-    products: [] as IProduct[],
-    page: 1,
-  });
-  const searchParams = useSearchParams();
-
-  const nftListRef = useRef(null);
-
-  const fetchProducts = async (page: number = 1) => {
-    setLoading(true);
-    const query = getQuery(searchParams.toString());
-    const queryStr = generateParams(query);
-
-    try {
-      const response = await fetch(
-        `${url}?_page=${page}&_limit=20&${queryStr}`
-      );
-      if (!response.ok) {
-        throw new Error('Failed to fetch Product data');
-      }
-
-      const data: IProduct[] = await response.json();
-      setState((prevState) => {
-        const prevProductIds = prevState.products.map((p) => p.id);
-        const products = [...prevState.products];
-        data.forEach((product) => {
-          if (!prevProductIds.includes(product.id)) {
-            products.push(product);
-          }
-        });
-
-        return {
-          ...prevState,
-          products,
-        };
-      });
-    } catch (error) {
-      console.error(error);
-    }
-
-    setLoading(false);
-  };
-
-  const refreshProducts = useCallback(() => {
-    setState({ products: [], page: 1 });
-    fetchProducts(1);
-  }, [fetchProducts]);
-
-  const fetchMoreProducts = useCallback(async () => {
-    const newPage = state.page + 1;
-    setState((prevState) => ({ ...prevState, page: prevState.page + 1 }));
-    fetchProducts(newPage);
-    if (nftListRef.current) {
-      const nftList = nftListRef.current as HTMLDivElement;
-      nftList.scrollTo(0, nftList.scrollHeight);
-    }
-  }, [fetchProducts, nftListRef]);
-
-  useEffect(() => {
-    // Only fetch products if searchParams is valid
-    if (searchParams.toString()) {
-      refreshProducts();
-    }
-  }, [searchParams]);
-
   return (
     <div className={styles.page}>
       <Header></Header>
-      <main className={styles.main}>
-        <div className={styles.mainLeft}>
-          <Filter></Filter>
-        </div>
-        <div className={styles.mainRight}>
-          <div className={styles.filterButtons}>
-            <FilterButtons></FilterButtons>
-          </div>
-          <div className={styles.nftCards}>
-            <div className={styles.row} ref={nftListRef}>
-              {state.products.map((p) => (
-                <div key={p.id} className={styles.col}>
-                  <NFTCard product={p}></NFTCard>
-                </div>
-              ))}
-              {loading
-                ? Array.from({ length: 5 }).map((_, index) => (
-                    <div key={`skeleton-${index}`} className={styles.col}>
-                      <NFTCardSkeleton></NFTCardSkeleton>
-                    </div>
-                  ))
-                : []}
-            </div>
-          </div>
-          <div className={styles.nftMore}>
-            <Button type="primary" onClick={fetchMoreProducts}>
-              View More
-            </Button>
-          </div>
-        </div>
-      </main>
+      <Suspense>
+        <NFT></NFT>
+      </Suspense>
       <Footer></Footer>
     </div>
   );

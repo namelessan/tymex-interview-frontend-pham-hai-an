@@ -13,10 +13,6 @@ export default function Filter() {
   const router = useRouter();
   const [form] = Form.useForm();
 
-  const onReset = () => {
-    form.resetFields();
-  };
-
   const [open, setOpen] = useState(false);
   const [searchStr, setSearchStr] = useState('');
   const searchStrRef = useRef(searchStr);
@@ -27,6 +23,10 @@ export default function Filter() {
     theme: 'Light',
     timeSort: 'createdAt',
     priceSort: 'price',
+  };
+
+  const onReset = () => {
+    form.setFieldsValue(defaultValue);
   };
 
   const searchParams = useSearchParams();

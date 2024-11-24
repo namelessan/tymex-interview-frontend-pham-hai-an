@@ -11,6 +11,7 @@ import heartPurple from '../../../../public/icons/heart_purple.svg';
 import onlineIcon from '../../../../public/icons/online.svg';
 import offlineIcon from '../../../../public/icons/offline.svg';
 import { Skeleton } from 'antd';
+import { IProduct } from '@/app/types';
 
 interface Props {
   product: IProduct;

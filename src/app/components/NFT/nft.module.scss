@@ -1,0 +1,77 @@
+@import '../../../styles/mixins.scss';
+
+.main {
+  padding: 10px;
+  position: relative;
+  @include desktop {
+    padding: 40px;
+    min-height: 650px;
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -8px;
+  margin-right: -8px;
+
+  @include desktop {
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+
+.col {
+  flex: 1;
+  flex-basis: 50%;
+  max-width: 50%;
+  padding: 8px;
+  height: 100%;
+  @include tablet {
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+
+  @include desktop {
+    padding: 15px;
+    flex-basis: 33%;
+    max-width: 33%;
+  }
+
+  @include desktoplg {
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+}
+
+.mainLeft {
+  @include desktop {
+    position: absolute;
+    width: 340px;
+    padding-right: 30px;
+  }
+}
+
+.mainRight {
+  @include desktop {
+    margin-left: 340px;
+  }
+}
+
+.nftCards {
+  max-height: 100vh;
+  overflow: scroll;
+
+  @include desktop {
+    max-height: 120vh;
+  }
+}
+
+.filterButtons {
+  position: relative;
+}
+
+.nftMore {
+  padding-top: 15px;
+  text-align: center;
+}

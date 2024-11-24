@@ -11,11 +11,11 @@ export const generateParams = (query: any) => {
   }, '');
 };
 
-export const debounce = (func: Function, delay = 300) => {
+export const debounce = (func: (...args: any[]) => void, delay = 300) => {
   let timeout: ReturnType<typeof setTimeout> | null = null;
 
-  return function (...args: any[]) {
-    const context = this;
+  return function (this: any, ...args: any[]) {
+    const context = this; // 'this' is typed as any
 
     // Clear the previous timeout if the function is called again
     if (timeout) {
